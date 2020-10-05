@@ -8,6 +8,9 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+/**
+ * @author Jin
+ */
 public interface ArticleMapper extends BaseMapper<Article> {
 
     @Select("select username from base_user where id =#{id}")

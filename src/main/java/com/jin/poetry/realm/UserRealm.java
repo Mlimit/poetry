@@ -49,11 +49,12 @@ public class UserRealm extends AuthorizingRealm {
 
 		QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 		queryWrapper.eq("loginname", token.getPrincipal().toString());
-		User User = userService.getOne(queryWrapper);
-		if (null != User) {
+		User user = userService.getOne(queryWrapper);
+		if (null != user) {
 			ActiverUser activerUser = new ActiverUser();
-			activerUser.setUser(User);
+			activerUser.setUser(user);
 
+			//根据用户ID查询percode
 			//查询所有菜单
 			QueryWrapper<Permission> qw=new QueryWrapper<>();
 			//设置只能查询菜单
@@ -61,6 +62,8 @@ public class UserRealm extends AuthorizingRealm {
 			qw.eq("available", Constast.AVAILABLE_TRUE);
 
 			//根据用户ID+角色+权限去查询
+			Integer userId=user.getId();
+			//根据用户ID查询角色
 			//根据角色ID取到权限和菜单ID
 			Set<Integer> pids=new HashSet<>();
 			List<Permission> list=new ArrayList<>();
@@ -76,8 +79,8 @@ public class UserRealm extends AuthorizingRealm {
 			//放到
 			activerUser.setPermissions(percodes);
 
-			ByteSource credentialsSalt = ByteSource.Util.bytes(User.getSalt());
-			SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activerUser, User.getPwd(), credentialsSalt,
+			ByteSource credentialsSalt = ByteSource.Util.bytes(user.getSalt());
+			SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activerUser, user.getPwd(), credentialsSalt,
 					this.getName());
 			return info;
 		}

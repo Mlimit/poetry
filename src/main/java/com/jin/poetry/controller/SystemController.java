@@ -123,6 +123,14 @@ public class SystemController {
     }
 
     /**
+     * 跳转到问答管理
+     */
+    @RequestMapping("toQuestionManager")
+    public String toQuestionManager() {
+        return "article/questionManager";
+    }
+
+    /**
      * 跳转到文章分类管理
      */
     @RequestMapping("toCategoryManager")
@@ -138,5 +146,20 @@ public class SystemController {
         return "article/commentManager";
     }
 
+    /**
+     * 跳转到商品管理
+     */
+    @RequestMapping("toGoodsManager")
+    public String toGoodsManager() {
+        return "mall/goodsManager";
+    }
+
+    /**
+     * 跳转到订单管理
+     */
+    @RequestMapping("toOrderManager")
+    public String toOrderManager() {
+        return "mall/orderManager";
+    }
 
 }

@@ -32,7 +32,7 @@ public class BaseUserController {
      * 添加
      */
     @RequestMapping("/addBaseUser")
-    public ResultObj addBaseUser(BaseUserVo baseUserVo){
+    public ResultObj addBaseUser(BaseUserVo baseUserVo) {
         return baseUserService.addBaseUser(baseUserVo);
     }
 
@@ -48,8 +48,8 @@ public class BaseUserController {
      * 删除
      */
     @RequestMapping("/deleteBaseUser")
-    public ResultObj deleteBaseUser(Integer id,String avatarpath) {
-        return baseUserService.deleteBaseUser(id,avatarpath);
+    public ResultObj deleteBaseUser(Integer id, String avatarpath) {
+        return baseUserService.deleteBaseUser(id, avatarpath);
     }
 
     /**
@@ -66,9 +66,9 @@ public class BaseUserController {
     @RequestMapping("/resetPwd")
     public ResultObj resetPwd(Integer id) {
         try {
-            BaseUser baseUser =new BaseUser();
+            BaseUser baseUser = new BaseUser();
             baseUser.setId(id);
-            String salt= IdUtil.simpleUUID().toUpperCase();
+            String salt = IdUtil.simpleUUID().toUpperCase();
             baseUser.setSalt(salt);//设置盐
             baseUser.setPassword(new Md5Hash(Constast.USER_DEFAULT_PWD, salt, 2).toString());//设置密码
             this.baseUserService.updateById(baseUser);

@@ -34,7 +34,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
     @Override
-    public void saveUserRole(Integer uid, Integer[] ids) {
+    public void saveUserRole(Integer uid, Integer[] ids) {}
 
-    }
 }
