@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jin.poetry.service.UserService;
-import sun.security.provider.MD5;
 
 @Service
 @Transactional

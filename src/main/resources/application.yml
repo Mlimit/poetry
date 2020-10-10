@@ -17,14 +17,14 @@ spring:
         enabled: true
         login-username: root
         login-password: root
-        allow: 
-        deny: 
+        allow:
+        deny:
         url-pattern: /druid/*
   #thymeleaf的配置 
-  thymeleaf: 
+  thymeleaf:
     cache: false
     enabled: true
-#      web-stat-filter: 
+#      web-stat-filter:
 #        enabled: true
 #        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
@@ -43,20 +43,20 @@ mybatis-plus:
     banner: true
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    
+
 #shiro的配置
 shiro:
   hash-algorithm-name: md5
   hash-iterations: 2
   anon-urls:
-  - /index.html*
-  - /toLogin*
-  - /login/*
-  - /resources/**
+    - /index.html*
+    - /toLogin*
+    - /sys_login*
+    - /resources/**
   login-url: /index.html
-  log-out-url: /login/logout*
-  authc-ulrs:
-#  - /**
+  log-out-url: /logout*
+  authc-urls:
+    - /**
 
 server:
   port: 8081

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.jin.poetry.common.ActiverUser;
 import com.jin.poetry.common.ResultObj;
@@ -24,14 +23,13 @@ import com.jin.poetry.service.LoginfoService;
  * 登陆前端控制器
  */
 @Controller
-@RequestMapping("login")
 public class LoginController {
 
     @Autowired
     private LoginfoService loginfoService;
 
     @ResponseBody
-    @RequestMapping("sys_login")
+    @RequestMapping("/sys_login")
     public ResultObj login(String loginname, String pwd) {
         Subject subject = SecurityUtils.getSubject();
         AuthenticationToken token = new UsernamePasswordToken(loginname, pwd);
@@ -52,12 +50,10 @@ public class LoginController {
         }
     }
 
-    @RequestMapping("sys_logout")
-    public String logout() {
-//		WebUtils.getSession().invalidate();
+    @RequestMapping("/logout")
+    public void logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return "index/login";
     }
 }
 

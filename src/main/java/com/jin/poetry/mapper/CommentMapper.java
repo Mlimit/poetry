@@ -12,7 +12,7 @@ public interface CommentMapper extends BaseMapper<Comment> {
     @Select("SELECT count(*) FROM `comment` where aid= ${id}")
     public Integer getCommentNumberById(Integer id);
 
-    @Select("select id from base_user where username='${reviewer}'")
+    @Select("select id from user where username='${reviewer}'")
     public Integer getReviewerId(String reviewer);
 
     @Select("select id from article where title='${title}'")
