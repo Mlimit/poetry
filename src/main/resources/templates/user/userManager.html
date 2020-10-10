@@ -90,7 +90,7 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label required">手机</label>
 				<div class="layui-input-block">
-					<input type="number" name="mobile" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机" value="" class="layui-input">
+					<input type="text" name="mobile" lay-verify="required" lay-reqtext="手机不能为空" placeholder="请输入手机" value="" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -130,7 +130,7 @@
 		//加载数据
 		var tableIns=table.render({
 			elem: '#currentTableId',
-			url: '/loadAllBaseUser',
+			url: '/loadAllUser',
 			toolbar: '#toolbarDemo',
 			cols: [
 					[
@@ -216,7 +216,7 @@
 				title:'添加角色',
 				success:function(){
 					$("#dataFrm")[0].reset();
-					url="/addBaseUser";
+					url="/addUser";
 					//设置默认图片
 					$(".thumbImg").attr("src",'/file/showImageByPath?path=images/defaultavatarpath.png');
 					$("#avatarpath").val('images/defaultavatarpath.png');
@@ -239,7 +239,7 @@
 					$("#dataFrm")[0].reset();
 					//装载新的数据
 					form.val("dataFrm",data);
-					url="/updateBaseUser";
+					url="/updateUser";
 					$(".thumbImg").attr("src",'/file/showImageByPath?path='+data.avatarpath);
 				}
 			});
@@ -274,7 +274,7 @@
 		//删除
 		function deleteUser(data){
 			layer.confirm('你确定要删除【'+data.username+'】这个用户吗?', {icon: 3, title:'提示'}, function(index){
-				$.post("/deleteBaseUser",{id:data.id,avatarpath:data.avatarpath},function(res){
+				$.post("/deleteUser",{id:data.id,avatarpath:data.avatarpath},function(res){
 					if(res.code==200){
 						tableIns.reload();
 					}
@@ -305,7 +305,7 @@
 							ids+="&ids="+item.id;
 						}
 					})
-					$.post("/batchDeleteBaseUser",ids,function(res){
+					$.post("/batchDeleteUser",ids,function(res){
 						if(res.code==200){
 							tableIns.reload();
 						}

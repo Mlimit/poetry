@@ -1,12 +1,9 @@
 package com.jin.poetry.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jin.poetry.domain.BaseUser;
 import com.jin.poetry.domain.Comment;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 
 @Repository

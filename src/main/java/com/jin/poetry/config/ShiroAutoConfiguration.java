@@ -41,7 +41,7 @@ public class ShiroAutoConfiguration {
 
     private String[] anonUrls;
     private String logOutUrl;
-    private String[] authcUlrs;
+    private String[] authcUrls;
 
     /**
      * 声明凭证匹配器
@@ -98,8 +98,8 @@ public class ShiroAutoConfiguration {
             filterChainDefinitionMap.put(logOutUrl, "logout");
         }
         // 设置拦截的路径
-        if (authcUlrs != null && authcUlrs.length > 0) {
-            for (String authc : authcUlrs) {
+        if (authcUrls != null && authcUrls.length > 0) {
+            for (String authc : authcUrls) {
                 filterChainDefinitionMap.put(authc, "authc");
             }
         }

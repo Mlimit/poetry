@@ -4,11 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.jin.poetry.common.DataGridView;
 import com.jin.poetry.common.ResultObj;
 import com.jin.poetry.domain.Article;
-import com.jin.poetry.domain.Category;
 import com.jin.poetry.vo.ArticleVo;
-import com.jin.poetry.vo.BaseUserVo;
-
-import java.util.List;
 
 public interface ArticleService extends IService<Article> {
     public DataGridView loadAllArticle(ArticleVo articleVo);

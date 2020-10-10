@@ -7,12 +7,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jin.poetry.common.DataGridView;
 import com.jin.poetry.common.ResultObj;
 import com.jin.poetry.domain.Article;
-import com.jin.poetry.domain.BaseUser;
 import com.jin.poetry.domain.Favor;
+import com.jin.poetry.domain.User;
 import com.jin.poetry.mapper.FavorMapper;
 import com.jin.poetry.service.ArticleService;
-import com.jin.poetry.service.BaseUserService;
 import com.jin.poetry.service.FavorService;
+import com.jin.poetry.service.UserService;
 import com.jin.poetry.vo.FavorVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ import java.util.List;
 public class FavorServiceImpl extends ServiceImpl<FavorMapper, Favor> implements FavorService {
 
     @Autowired
-    private BaseUserService baseUserService;
+    private UserService userService;
 
     @Autowired
     private ArticleService articleService;
@@ -44,10 +44,10 @@ public class FavorServiceImpl extends ServiceImpl<FavorMapper, Favor> implements
         this.page(favorIPage, queryWrapper);
         List<Favor> records = favorIPage.getRecords();
         for (Favor favor : records) {
-            BaseUser baseUser = this.baseUserService.getById(favor.getUid());
+            User user = this.userService.getById(favor.getUid());
             Article article = this.articleService.getById(favor.getAid());
-            if (null != baseUser && null != article) {
-                favor.setFavorer(baseUser.getUsername());
+            if (null != user && null != article) {
+                favor.setFavorer(user.getUsername());
                 favor.setTitle(article.getTitle());
             }
         }

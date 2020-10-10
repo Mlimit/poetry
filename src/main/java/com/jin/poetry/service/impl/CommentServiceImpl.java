@@ -7,12 +7,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jin.poetry.common.DataGridView;
 import com.jin.poetry.common.ResultObj;
 import com.jin.poetry.domain.Article;
-import com.jin.poetry.domain.BaseUser;
 import com.jin.poetry.domain.Comment;
+import com.jin.poetry.domain.User;
 import com.jin.poetry.mapper.CommentMapper;
 import com.jin.poetry.service.ArticleService;
-import com.jin.poetry.service.BaseUserService;
 import com.jin.poetry.service.CommentService;
+import com.jin.poetry.service.UserService;
 import com.jin.poetry.vo.CommentVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import java.util.List;
 public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> implements CommentService {
 
     @Autowired
-    private BaseUserService baseUserService;
+    private UserService userService;
 
     @Autowired
     private ArticleService articleService;
@@ -48,10 +48,10 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         this.page(commentIPage, queryWrapper);
         List<Comment> records = commentIPage.getRecords();
         for (Comment comment : records) {
-            BaseUser baseUser = this.baseUserService.getById(comment.getUid());
+            User user = this.userService.getById(comment.getUid());
             Article article = this.articleService.getById(comment.getAid());
-            if (null != baseUser&& null!=article) {
-                comment.setReviewer(baseUser.getUsername());
+            if (null != user&& null!=article) {
+                comment.setReviewer(user.getUsername());
                 comment.setTitle(article.getTitle());
             }
         }

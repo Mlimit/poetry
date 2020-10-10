@@ -13,7 +13,6 @@ import com.jin.poetry.mapper.ArticleMapper;
 import com.jin.poetry.service.ArticleService;
 import com.jin.poetry.service.CategoryService;
 import com.jin.poetry.vo.ArticleVo;
-import com.jin.poetry.vo.BaseUserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

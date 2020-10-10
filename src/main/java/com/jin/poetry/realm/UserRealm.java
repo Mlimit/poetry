@@ -54,15 +54,12 @@ public class UserRealm extends AuthorizingRealm {
 			ActiverUser activerUser = new ActiverUser();
 			activerUser.setUser(user);
 
-			//根据用户ID查询percode
 			//查询所有菜单
 			QueryWrapper<Permission> qw=new QueryWrapper<>();
 			//设置只能查询菜单
 			qw.eq("type",Constast.TYPE_PERMISSION);
 			qw.eq("available", Constast.AVAILABLE_TRUE);
 
-			//根据用户ID+角色+权限去查询
-			Integer userId=user.getId();
 			//根据用户ID查询角色
 			//根据角色ID取到权限和菜单ID
 			Set<Integer> pids=new HashSet<>();
@@ -80,7 +77,7 @@ public class UserRealm extends AuthorizingRealm {
 			activerUser.setPermissions(percodes);
 
 			ByteSource credentialsSalt = ByteSource.Util.bytes(user.getSalt());
-			SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activerUser, user.getPwd(), credentialsSalt,
+			SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activerUser, user.getPassword(), credentialsSalt,
 					this.getName());
 			return info;
 		}

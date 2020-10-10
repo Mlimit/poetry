@@ -33,6 +33,7 @@ public interface Constast {
 	 */
 	public static final Integer USER_TYPE_SUPER = 0;
 	public static final Integer USER_TYPE_NORMAL = 1;
+	public static final Integer USER_TYPE_GENERAL = 2;
 	
 	/**
 	 * 展开类型

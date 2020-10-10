@@ -41,7 +41,7 @@ public class LoginController {
             WebUtils.getSession().setAttribute("user", activerUser.getUser());
             //记录登陆日志
             Loginfo entity = new Loginfo();
-            entity.setLoginname(activerUser.getUser().getName() + "-" + activerUser.getUser().getLoginname());
+            entity.setLoginname(activerUser.getUser().getUsername() + "-" + activerUser.getUser().getLoginname());
             entity.setLoginip(WebUtils.getRequest().getRemoteAddr());
             entity.setLogintime(new Date());
             loginfoService.save(entity);

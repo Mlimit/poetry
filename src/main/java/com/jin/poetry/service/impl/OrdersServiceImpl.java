@@ -7,13 +7,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jin.poetry.common.DataGridView;
 import com.jin.poetry.common.ResultObj;
-import com.jin.poetry.domain.Article;
-import com.jin.poetry.domain.BaseUser;
-import com.jin.poetry.domain.Comment;
 import com.jin.poetry.domain.Orders;
+import com.jin.poetry.domain.User;
 import com.jin.poetry.mapper.OrdersMapper;
-import com.jin.poetry.service.BaseUserService;
 import com.jin.poetry.service.OrdersService;
+import com.jin.poetry.service.UserService;
 import com.jin.poetry.vo.OrdersVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +26,7 @@ import java.util.List;
 public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
 
     @Autowired
-    private BaseUserService baseUserService;
+    private UserService userService;
 
     @Autowired
     private OrdersMapper ordersMapper;
@@ -45,9 +43,9 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         this.page(ordersIPage, queryWrapper);
         List<Orders> records = ordersIPage.getRecords();
         for (Orders orders : records) {
-            BaseUser baseUser = this.baseUserService.getById(orders.getUid());
-            if (null != baseUser) {
-                orders.setUsername(baseUser.getUsername());
+            User user = this.userService.getById(orders.getUid());
+            if (null != user) {
+                orders.setUsername(user.getUsername());
             }
         }
         return new DataGridView(ordersIPage.getTotal(), records);
