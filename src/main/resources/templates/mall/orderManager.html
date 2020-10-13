@@ -63,15 +63,13 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label required">订单编号</label>
                     <div class="layui-input-block">
-                        <input type="text" name="oid" lay-verify="required" lay-reqtext="标题不能为空" placeholder="请输入订单标题"
-                               value="" class="layui-input">
+                        <input type="text" name="oid" lay-verify="required" value="" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label required">用户</label>
                     <div class="layui-input-block">
-                        <input type="text" name="uid" lay-verify="required" lay-reqtext="用户ID不能为空"
-                               placeholder="请输入用户ID" value="" class="layui-input">
+                        <input type="text" name="uid" lay-verify="required" value="" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -228,7 +226,7 @@
                 shadeClose: true,
                 content: $("#addOrUpdateDiv"),
                 area: ['800px', '600px'],
-                title: '添加用户',
+                title: '添加订单',
                 success: function () {
                     $("#dataFrm")[0].reset();
                     layedit.setContent(editIndex, "");
@@ -256,7 +254,7 @@
                 shadeClose: true,
                 content: $("#addOrUpdateDiv"),
                 area: ['800px', '600px'],
-                title: '修改用户',
+                title: '修改订单',
                 scrollbar: false,
                 success: function () {
                     $("#dataFrm")[0].reset();
