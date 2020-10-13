@@ -64,7 +64,7 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
      */
     @Override
     public ResultObj updateGoods(GoodsVo goodsVo) {
-        //说明是不默认图片
+        //说明不是默认图片
         if(!(goodsVo.getImgpath()!=null&&goodsVo.getImgpath().equals(Constast.IMAGES_DEFAULTGOODSIMG_PNG))) {
             if(goodsVo.getImgpath().endsWith("_temp")) {
                 String newName= AppFileUtils.renameFile(goodsVo.getImgpath());

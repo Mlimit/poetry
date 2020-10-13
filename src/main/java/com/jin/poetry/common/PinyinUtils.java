@@ -35,11 +35,15 @@ public class PinyinUtils {
 		} else {
 			return "*";
 		}
-		return output;
+		char[] ch = output.toCharArray();
+		if (ch[0] >= 'a' && ch[0] <= 'z') {
+			ch[0] = (char) (ch[0] - 32);
+		}
+		return new String(ch);
 	}
 
 	public static void main(String[] args) {
-		String yin = getPingYin("辜月");
+		String yin = getPingYin("西塘");
 		System.out.println(yin);
 	}
 }

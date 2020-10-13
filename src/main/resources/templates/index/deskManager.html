@@ -61,7 +61,7 @@
                                     <div class="panel-body">
                                         <div class="panel-title">
                                             <span class="label layui-bg-orange">实时</span>
-                                            <h1 class="no-margins">123425</h1>
+                                            <h1 class="no-margins">732</h1>
                                             <h5>今日活跃用户总数</h5>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                     <div class="panel-body">
                                         <div class="panel-title">
                                             <span class="label layui-bg-green">实时</span>
-                                            <h1 class="no-margins">53234</h1>
+                                            <h1 class="no-margins">2431</h1>
                                             <h5>今日文章浏览量总数</h5>
                                         </div>
                                     </div>
@@ -90,15 +90,15 @@
                     <div class="welcome-module">
                         <div class="layui-row layui-col-space10 layuimini-qiuck">
                             <div class="layui-col-xs3 layuimini-qiuck-module">
-                                <a href="/toMenuManager" data-title="菜单管理" data-icon="fa fa-window-maximize">
-                                    <i class="fa fa-window-maximize"></i>
-                                    <cite>菜单管理</cite>
+                                <a href="/toUserManager" data-title="用户管理" data-icon="fa fa-gears">
+                                    <i class="fa fa-user"></i>
+                                    <cite>用户管理</cite>
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
-                                <a href="/toUserManager" data-title="用户管理" data-icon="fa fa-gears">
-                                    <i class="fa fa-gears"></i>
-                                    <cite>用户管理</cite>
+                                <a href="/toMenuManager" data-title="菜单管理" data-icon="fa fa-window-maximize">
+                                    <i class="fa fa-window-maximize"></i>
+                                    <cite>菜单管理</cite>
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
@@ -108,9 +108,9 @@
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
-                                <a href="/resources/page/icon.html" data-title="图标列表" data-icon="fa fa-dot-circle-o">
-                                    <i class="fa fa-dot-circle-o"></i>
-                                    <cite>图标列表</cite>
+                                <a href="/toCommentManager" data-title="评论管理" data-icon="fa fa-dot-circle-o">
+                                    <i class="fa fa-commenting-o"></i>
+                                    <cite>评论管理</cite>
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
@@ -120,21 +120,21 @@
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
-                                <a href="/resources/page/404.html" data-title="404页面" data-icon="fa fa-hourglass-end">
-                                    <i class="fa fa-hourglass-end"></i>
-                                    <cite>404页面</cite>
+                                <a href="/toQuestionManager" data-title="问答管理" data-icon="fa fa-hourglass-end">
+                                    <i class="fa fa-question"></i>
+                                    <cite>问答管理</cite>
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
                                 <a href="/toCategoryManager" data-title="分类管理" data-icon="fa fa-snowflake-o">
-                                    <i class="fa fa-snowflake-o"></i>
+                                    <i class="fa fa-th-list"></i>
                                     <cite>分类管理</cite>
                                 </a>
                             </div>
                             <div class="layui-col-xs3 layuimini-qiuck-module">
-                                <a href="https://www.baidu.com" data-title="百度搜索" data-icon="fa fa-search">
+                                <a href="/toGoodsManager" data-title="商品管理" data-icon="fa fa-search">
                                     <i class="fa fa-search"></i>
-                                    <cite>百度搜索</cite>
+                                    <cite>商品管理</cite>
                                 </a>
                             </div>
                         </div>
@@ -176,7 +176,7 @@
                         trigger: 'axis'
                     },
                     legend: {
-                        data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+                        data: ['访问量', '活跃用户', '文章浏览量', '文章发布数', '游玩用户数']
                     },
                     grid: {
                         left: '3%',
@@ -199,27 +199,27 @@
                     },
                     series: [
                         {
-                            name: '邮件营销',
+                            name: '访问量',
                             type: 'line',
                             data: data.yjyx
                         },
                         {
-                            name: '联盟广告',
+                            name: '活跃用户',
                             type: 'line',
                             data: data.lmgg
                         },
                         {
-                            name: '视频广告',
+                            name: '文章浏览量',
                             type: 'line',
                             data: data.spgg
                         },
                         {
-                            name: '直接访问',
+                            name: '文章发布数',
                             type: 'line',
                             data: data.zjfw
                         },
                         {
-                            name: '搜索引擎',
+                            name: '游玩用户数',
                             type: 'line',
                             data: data.ssyq
                         }

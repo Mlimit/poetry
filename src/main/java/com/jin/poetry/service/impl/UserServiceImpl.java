@@ -89,7 +89,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResultObj updateUser(UserVo userVo) {
         try {
-            //说明是不默认图片
+            //说明不是默认图片
             if(!(userVo.getAvatarpath()!=null&&userVo.getAvatarpath().equals(Constast.IMAGES_DEFAULTGOODSIMG_PNG))) {
                 if(userVo.getAvatarpath().endsWith("_temp")) {
                     String newName= AppFileUtils.renameFile(userVo.getAvatarpath());
@@ -141,6 +141,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
     }
 
+    /**
+     * 重置密码
+     */
     @Override
     public ResultObj resetPwd(Integer id) {
         try {

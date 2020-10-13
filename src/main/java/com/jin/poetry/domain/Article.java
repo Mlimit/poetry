@@ -14,6 +14,7 @@ public class Article {
     @TableField(exist = false)
     private String categoryname;
     private Integer cid;
+    @TableField(exist = false)
     private String author;
     private String content;
     private Date createtime;

@@ -53,6 +53,7 @@ shiro:
     - /toLogin*
     - /sys_login*
     - /resources/**
+    - /verifyCode
   login-url: /index.html
   log-out-url: /logout*
   authc-urls:

@@ -162,4 +162,13 @@ public class SystemController {
         return "mall/orderManager";
     }
 
+    /**
+     * 跳转到行程管理
+     */
+    @RequestMapping("toTripManager")
+    public String toTripManager() {
+        return "trip/scenicManager";
+    }
+
+
 }

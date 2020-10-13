@@ -9,9 +9,11 @@ import com.jin.poetry.common.DataGridView;
 import com.jin.poetry.common.ResultObj;
 import com.jin.poetry.domain.Article;
 import com.jin.poetry.domain.Category;
+import com.jin.poetry.domain.User;
 import com.jin.poetry.mapper.ArticleMapper;
 import com.jin.poetry.service.ArticleService;
 import com.jin.poetry.service.CategoryService;
+import com.jin.poetry.service.UserService;
 import com.jin.poetry.vo.ArticleVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
 
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private CategoryService categoryService;
@@ -47,9 +51,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         List<Article> records = articleIPage.getRecords();
         for (Article article : records) {
             Category category = this.categoryService.getById(article.getCid());
+            User user = this.userService.getById(article.getUid());
             if (null != category) {
                 article.setCategoryname(category.getCategoryname());
             }
+            if (null != user) {
+                article.setAuthor(user.getUsername());
+            }
+
         }
         return new DataGridView(articleIPage.getTotal(), articleIPage.getRecords());
     }

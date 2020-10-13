@@ -25,7 +25,7 @@ public class User implements Serializable {
     private String username;
     @JsonIgnore
     private String password;
-    private Integer sex;
+    private Boolean sex;
     private String mobile;
     private String signature;
     private String address;
@@ -35,11 +35,13 @@ public class User implements Serializable {
     private String avatarpath;
     @JsonIgnore
     private String salt;
+    @JsonIgnore
     private String loginname;
 
     /**
      * 用户类型[0超级管理员1，管理员，2普通用户]
      */
+    @JsonIgnore
     private Integer type;
 
 }

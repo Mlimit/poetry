@@ -45,9 +45,9 @@
         </div>
 
         <div id="currentTableBar" style="display: none;">
-<!--            <button type="button" class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="query">-->
-<!--                详情-->
-<!--            </button>-->
+            <button type="button" class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="querys">
+                详情<!--            没实现-->
+            </button>
             <button type="button" class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">
                 删除
             </button>
@@ -122,11 +122,11 @@
             cols: [
                 [
                     {type: "checkbox"},
-                    {field: 'id', title: 'ID', sort: true},
-                    {field: 'oid', title: '订单编号'},
-                    {field: 'username', title: '用户'},
-                    {field: 'postage', title: '配送费'},
-                    {field: 'price', title: '总价'},
+                    {field: 'id', title: 'ID', sort: true,align:'center'},
+                    {field: 'oid', title: '订单编号',align:'center'},
+                    {field: 'username', title: '用户',align:'center'},
+                    {field: 'postage', title: '配送费',align:'center'},
+                    {field: 'price', title: '总价',align:'center'},
                     {field:'status', title:'状态',align:'center',templet:function(data){
                         var title,color;
                             if(data.status==0)
@@ -308,7 +308,7 @@
 
         //删除
         function deleteUser(data) {
-            layer.confirm('你确定要删除【' + data.title + '】这个订单吗?', {icon: 3, title: '提示'}, function (index) {
+            layer.confirm('你确定要删除【' + data.oid + '】这个订单吗?', {icon: 3, title: '提示'}, function (index) {
                 $.post("/deleteOrders", {id: data.id}, function (res) {
                     if (res.code == 200) {
                         tableIns.reload();

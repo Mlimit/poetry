@@ -111,6 +111,7 @@ public class ShiroAutoConfiguration {
         return factoryBean;
     }
 
+
     /**
      * 注册shiro的委托过滤器，相当于之前在web.xml里面配置的
      *
