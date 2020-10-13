@@ -100,7 +100,7 @@
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button type="button" class="layui-btn layui-btn-normal" lay-submit lay-filter="doSubmit">确认保存</button>
+					<button type="button" class="layui-btn layui-btn-normal" id="doSubmit" lay-submit lay-filter="doSubmit">确认保存</button>
 					<button type="reset" class="layui-btn layui-btn-normal" ><span class="layui-icon layui-icon-refresh-1"></span>重置</button>
 				</div>
 			</div>
@@ -227,59 +227,71 @@
 			};
 		});
 
-		var mainIndex;
-		var url;
 		//打开添加的弹出层
-		function openAddLayer(){
-			mainIndex=layer.open({
-				type:1,
+		function openAddLayer() {
+			mainIndex = layer.open({
+				type: 1,
 				shade: 0.2,
-				maxmin:true,
+				maxmin: true,
 				shadeClose: true,
-				content:$("#addOrUpdateDiv"),
-				area:['800px','600px'],
-				title:'添加景点',
-				success:function(){
+				content: $("#addOrUpdateDiv"),
+				area: ['800px', '600px'],
+				title: '添加景点',
+				success: function () {
 					$("#dataFrm")[0].reset();
-					url="/addScenic";
-					//设置默认图片
+					layedit.setContent(editIndex, "");
+					url = "/addScenic";
 					$(".thumbImg").attr("src",'/file/showImageByPath?path=images/defaultphotopath.png');
 					$("#photopath").val('images/defaultphotopath.png');
 				}
-
 			});
 		}
 
 		//打开修改的弹出层
-		function openUpdateScenicLayer(data){
-			mainIndex=layer.open({
-				type:1,
+		function openUpdateScenicLayer(data) {
+			mainIndex = layer.open({
+				type: 1,
 				shade: 0.2,
-				maxmin:true,
+				maxmin: true,
 				shadeClose: true,
-				content:$("#addOrUpdateDiv"),
-				area:['800px','600px'],
-				title:'修改景点',
-				success:function(){
+				content: $("#addOrUpdateDiv"),
+				area: ['800px', '600px'],
+				title: '修改景点',
+				scrollbar: false,
+				success: function () {
 					$("#dataFrm")[0].reset();
 					//装载新的数据
-					form.val("dataFrm",data);
-					url="/updateScenic";
+					form.val("dataFrm", data);
+					layedit.setContent(editIndex, data.content);
+					url = "/updateScenic";
 					$(".thumbImg").attr("src",'/file/showImageByPath?path='+data.photopath);
 				}
 			});
 		}
 
-		form.on("submit(doSubmit)",function(data){
-			$.post(url,data.field,function(res){
-				if(res.code==200){
+		$("#doSubmit").click(function () {
+			//同步富文本和textarea里面的内容
+			layedit.sync(editIndex);
+			var data = $("#dataFrm").serialize();
+			$.post(url, data, function (res) {
+				if (res.code == 200) {
 					tableIns.reload();
 				}
 				layer.msg(res.msg);
 				layer.close(mainIndex);
 			})
-			return false;
-		});
+		})
+
+		// form.on("submit(doSubmit)", function (data) {
+		//     $.post(url, data.field, function (res) {
+		//         if (res.code == 200) {
+		//             tableIns.reload();
+		//         }
+		//         layer.msg(res.msg);
+		//         layer.close(mainIndex);
+		//     })
+		//     return false;
+		// });
 
 		//文件上传
 		upload.render({
